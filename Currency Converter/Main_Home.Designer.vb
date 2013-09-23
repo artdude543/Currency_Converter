@@ -23,6 +23,15 @@ Partial Class Main_Home
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpInput = New System.Windows.Forms.GroupBox()
+        Me.btnConvert = New System.Windows.Forms.Button()
+        Me.tlprbDenominations = New System.Windows.Forms.TableLayoutPanel()
+        Me.rbDenominationsYes = New System.Windows.Forms.RadioButton()
+        Me.rbDenominationsNo = New System.Windows.Forms.RadioButton()
+        Me.lblDenominations = New System.Windows.Forms.Label()
+        Me.lblInputAmount = New System.Windows.Forms.Label()
+        Me.txtInputAmount = New System.Windows.Forms.TextBox()
+        Me.lbConversion = New System.Windows.Forms.Label()
+        Me.rbDollarPound = New System.Windows.Forms.RadioButton()
         Me.rbPoundDollar = New System.Windows.Forms.RadioButton()
         Me.rbPoundEuro = New System.Windows.Forms.RadioButton()
         Me.rbEuroPound = New System.Windows.Forms.RadioButton()
@@ -44,24 +53,32 @@ Partial Class Main_Home
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.cmbTitle = New System.Windows.Forms.ComboBox()
         Me.txtuserFirstName = New System.Windows.Forms.TextBox()
-        Me.btnConvert = New System.Windows.Forms.Button()
         Me.menuHome = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.grpOutput = New System.Windows.Forms.GroupBox()
+        Me.txtLoss = New System.Windows.Forms.TextBox()
+        Me.lblLoss = New System.Windows.Forms.Label()
+        Me.txtOutputAfterCommission = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
-        Me.rbDollarPound = New System.Windows.Forms.RadioButton()
-        Me.lbConversion = New System.Windows.Forms.Label()
         Me.grpInput.SuspendLayout()
+        Me.tlprbDenominations.SuspendLayout()
         Me.menuHome.SuspendLayout()
         Me.grpOutput.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpInput
         '
+        Me.grpInput.Controls.Add(Me.btnConvert)
+        Me.grpInput.Controls.Add(Me.tlprbDenominations)
+        Me.grpInput.Controls.Add(Me.lblDenominations)
+        Me.grpInput.Controls.Add(Me.lblInputAmount)
+        Me.grpInput.Controls.Add(Me.txtInputAmount)
         Me.grpInput.Controls.Add(Me.lbConversion)
         Me.grpInput.Controls.Add(Me.rbDollarPound)
         Me.grpInput.Controls.Add(Me.rbPoundDollar)
@@ -85,13 +102,103 @@ Partial Class Main_Home
         Me.grpInput.Controls.Add(Me.lblTitle)
         Me.grpInput.Controls.Add(Me.cmbTitle)
         Me.grpInput.Controls.Add(Me.txtuserFirstName)
-        Me.grpInput.Controls.Add(Me.btnConvert)
         Me.grpInput.Location = New System.Drawing.Point(12, 27)
         Me.grpInput.Name = "grpInput"
-        Me.grpInput.Size = New System.Drawing.Size(401, 418)
+        Me.grpInput.Size = New System.Drawing.Size(405, 384)
         Me.grpInput.TabIndex = 0
         Me.grpInput.TabStop = False
         Me.grpInput.Text = "Input Values"
+        '
+        'btnConvert
+        '
+        Me.btnConvert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnConvert.Location = New System.Drawing.Point(324, 355)
+        Me.btnConvert.Name = "btnConvert"
+        Me.btnConvert.Size = New System.Drawing.Size(75, 23)
+        Me.btnConvert.TabIndex = 17
+        Me.btnConvert.Text = "Convert"
+        Me.btnConvert.UseVisualStyleBackColor = True
+        '
+        'tlprbDenominations
+        '
+        Me.tlprbDenominations.ColumnCount = 2
+        Me.tlprbDenominations.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tlprbDenominations.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54.0!))
+        Me.tlprbDenominations.Controls.Add(Me.rbDenominationsYes, 0, 0)
+        Me.tlprbDenominations.Controls.Add(Me.rbDenominationsNo, 1, 0)
+        Me.tlprbDenominations.Location = New System.Drawing.Point(255, 295)
+        Me.tlprbDenominations.Name = "tlprbDenominations"
+        Me.tlprbDenominations.RowCount = 1
+        Me.tlprbDenominations.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tlprbDenominations.Size = New System.Drawing.Size(111, 28)
+        Me.tlprbDenominations.TabIndex = 26
+        '
+        'rbDenominationsYes
+        '
+        Me.rbDenominationsYes.AutoSize = True
+        Me.rbDenominationsYes.Location = New System.Drawing.Point(3, 3)
+        Me.rbDenominationsYes.Name = "rbDenominationsYes"
+        Me.rbDenominationsYes.Size = New System.Drawing.Size(43, 17)
+        Me.rbDenominationsYes.TabIndex = 15
+        Me.rbDenominationsYes.TabStop = True
+        Me.rbDenominationsYes.Text = "Yes"
+        Me.rbDenominationsYes.UseVisualStyleBackColor = True
+        '
+        'rbDenominationsNo
+        '
+        Me.rbDenominationsNo.AutoSize = True
+        Me.rbDenominationsNo.Location = New System.Drawing.Point(60, 3)
+        Me.rbDenominationsNo.Name = "rbDenominationsNo"
+        Me.rbDenominationsNo.Size = New System.Drawing.Size(39, 17)
+        Me.rbDenominationsNo.TabIndex = 16
+        Me.rbDenominationsNo.TabStop = True
+        Me.rbDenominationsNo.Text = "No"
+        Me.rbDenominationsNo.UseVisualStyleBackColor = True
+        '
+        'lblDenominations
+        '
+        Me.lblDenominations.AutoSize = True
+        Me.lblDenominations.Location = New System.Drawing.Point(6, 301)
+        Me.lblDenominations.Name = "lblDenominations"
+        Me.lblDenominations.Size = New System.Drawing.Size(243, 13)
+        Me.lblDenominations.TabIndex = 25
+        Me.lblDenominations.Text = "Would you like the money in small denominations?"
+        '
+        'lblInputAmount
+        '
+        Me.lblInputAmount.AutoSize = True
+        Me.lblInputAmount.Location = New System.Drawing.Point(25, 272)
+        Me.lblInputAmount.Name = "lblInputAmount"
+        Me.lblInputAmount.Size = New System.Drawing.Size(198, 13)
+        Me.lblInputAmount.TabIndex = 24
+        Me.lblInputAmount.Text = "What amount would you like to convert?"
+        '
+        'txtInputAmount
+        '
+        Me.txtInputAmount.Location = New System.Drawing.Point(229, 269)
+        Me.txtInputAmount.Name = "txtInputAmount"
+        Me.txtInputAmount.Size = New System.Drawing.Size(160, 20)
+        Me.txtInputAmount.TabIndex = 14
+        '
+        'lbConversion
+        '
+        Me.lbConversion.AutoSize = True
+        Me.lbConversion.Location = New System.Drawing.Point(25, 197)
+        Me.lbConversion.Name = "lbConversion"
+        Me.lbConversion.Size = New System.Drawing.Size(172, 13)
+        Me.lbConversion.TabIndex = 22
+        Me.lbConversion.Text = "What would you like to convert to?"
+        '
+        'rbDollarPound
+        '
+        Me.rbDollarPound.AutoSize = True
+        Me.rbDollarPound.Location = New System.Drawing.Point(164, 247)
+        Me.rbDollarPound.Name = "rbDollarPound"
+        Me.rbDollarPound.Size = New System.Drawing.Size(98, 17)
+        Me.rbDollarPound.TabIndex = 13
+        Me.rbDollarPound.TabStop = True
+        Me.rbDollarPound.Text = "Dollar to Pound"
+        Me.rbDollarPound.UseVisualStyleBackColor = True
         '
         'rbPoundDollar
         '
@@ -99,7 +206,7 @@ Partial Class Main_Home
         Me.rbPoundDollar.Location = New System.Drawing.Point(58, 247)
         Me.rbPoundDollar.Name = "rbPoundDollar"
         Me.rbPoundDollar.Size = New System.Drawing.Size(98, 17)
-        Me.rbPoundDollar.TabIndex = 20
+        Me.rbPoundDollar.TabIndex = 12
         Me.rbPoundDollar.TabStop = True
         Me.rbPoundDollar.Text = "Pound to Dollar"
         Me.rbPoundDollar.UseVisualStyleBackColor = True
@@ -110,7 +217,7 @@ Partial Class Main_Home
         Me.rbPoundEuro.Location = New System.Drawing.Point(58, 224)
         Me.rbPoundEuro.Name = "rbPoundEuro"
         Me.rbPoundEuro.Size = New System.Drawing.Size(93, 17)
-        Me.rbPoundEuro.TabIndex = 19
+        Me.rbPoundEuro.TabIndex = 10
         Me.rbPoundEuro.TabStop = True
         Me.rbPoundEuro.Text = "Pound to Euro"
         Me.rbPoundEuro.UseVisualStyleBackColor = True
@@ -121,7 +228,7 @@ Partial Class Main_Home
         Me.rbEuroPound.Location = New System.Drawing.Point(164, 224)
         Me.rbEuroPound.Name = "rbEuroPound"
         Me.rbEuroPound.Size = New System.Drawing.Size(93, 17)
-        Me.rbEuroPound.TabIndex = 19
+        Me.rbEuroPound.TabIndex = 11
         Me.rbEuroPound.TabStop = True
         Me.rbEuroPound.Text = "Euro to Pound"
         Me.rbEuroPound.UseVisualStyleBackColor = True
@@ -131,7 +238,7 @@ Partial Class Main_Home
         Me.txtTownCity.Location = New System.Drawing.Point(90, 163)
         Me.txtTownCity.Name = "txtTownCity"
         Me.txtTownCity.Size = New System.Drawing.Size(299, 20)
-        Me.txtTownCity.TabIndex = 18
+        Me.txtTownCity.TabIndex = 9
         '
         'lblTown
         '
@@ -156,14 +263,14 @@ Partial Class Main_Home
         Me.txtStreetName.Location = New System.Drawing.Point(90, 137)
         Me.txtStreetName.Name = "txtStreetName"
         Me.txtStreetName.Size = New System.Drawing.Size(299, 20)
-        Me.txtStreetName.TabIndex = 15
+        Me.txtStreetName.TabIndex = 8
         '
         'txtHouseNumber
         '
         Me.txtHouseNumber.Location = New System.Drawing.Point(90, 111)
         Me.txtHouseNumber.Name = "txtHouseNumber"
         Me.txtHouseNumber.Size = New System.Drawing.Size(106, 20)
-        Me.txtHouseNumber.TabIndex = 7
+        Me.txtHouseNumber.TabIndex = 6
         '
         'Label3
         '
@@ -188,7 +295,7 @@ Partial Class Main_Home
         Me.txtPostcode.Location = New System.Drawing.Point(263, 111)
         Me.txtPostcode.Name = "txtPostcode"
         Me.txtPostcode.Size = New System.Drawing.Size(126, 20)
-        Me.txtPostcode.TabIndex = 6
+        Me.txtPostcode.TabIndex = 7
         '
         'txtNIN
         '
@@ -273,21 +380,12 @@ Partial Class Main_Home
         Me.txtuserFirstName.Size = New System.Drawing.Size(106, 20)
         Me.txtuserFirstName.TabIndex = 2
         '
-        'btnConvert
-        '
-        Me.btnConvert.Location = New System.Drawing.Point(232, 389)
-        Me.btnConvert.Name = "btnConvert"
-        Me.btnConvert.Size = New System.Drawing.Size(75, 23)
-        Me.btnConvert.TabIndex = 0
-        Me.btnConvert.Text = "Convert"
-        Me.btnConvert.UseVisualStyleBackColor = True
-        '
         'menuHome
         '
         Me.menuHome.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menuHome.Location = New System.Drawing.Point(0, 0)
         Me.menuHome.Name = "menuHome"
-        Me.menuHome.Size = New System.Drawing.Size(896, 24)
+        Me.menuHome.Size = New System.Drawing.Size(808, 24)
         Me.menuHome.TabIndex = 1
         Me.menuHome.Text = "MenuStrip1"
         '
@@ -319,67 +417,99 @@ Partial Class Main_Home
         '
         'grpOutput
         '
+        Me.grpOutput.Controls.Add(Me.txtLoss)
+        Me.grpOutput.Controls.Add(Me.lblLoss)
+        Me.grpOutput.Controls.Add(Me.txtOutputAfterCommission)
+        Me.grpOutput.Controls.Add(Me.Label5)
+        Me.grpOutput.Controls.Add(Me.txtOuputBeforeCommission)
         Me.grpOutput.Controls.Add(Me.Label1)
         Me.grpOutput.Controls.Add(Me.btnReset)
-        Me.grpOutput.Location = New System.Drawing.Point(493, 27)
+        Me.grpOutput.Location = New System.Drawing.Point(423, 28)
         Me.grpOutput.Name = "grpOutput"
-        Me.grpOutput.Size = New System.Drawing.Size(350, 418)
+        Me.grpOutput.Size = New System.Drawing.Size(373, 384)
         Me.grpOutput.TabIndex = 1
         Me.grpOutput.TabStop = False
         Me.grpOutput.Text = "Output Values"
         '
+        'txtLoss
+        '
+        Me.txtLoss.Location = New System.Drawing.Point(154, 77)
+        Me.txtLoss.Name = "txtLoss"
+        Me.txtLoss.ReadOnly = True
+        Me.txtLoss.Size = New System.Drawing.Size(100, 20)
+        Me.txtLoss.TabIndex = 22
+        '
+        'lblLoss
+        '
+        Me.lblLoss.AutoSize = True
+        Me.lblLoss.Location = New System.Drawing.Point(6, 80)
+        Me.lblLoss.Name = "lblLoss"
+        Me.lblLoss.Size = New System.Drawing.Size(142, 13)
+        Me.lblLoss.TabIndex = 21
+        Me.lblLoss.Text = "Total Loss After Commission:"
+        '
+        'txtOutputAfterCommission
+        '
+        Me.txtOutputAfterCommission.Location = New System.Drawing.Point(154, 51)
+        Me.txtOutputAfterCommission.Name = "txtOutputAfterCommission"
+        Me.txtOutputAfterCommission.ReadOnly = True
+        Me.txtOutputAfterCommission.Size = New System.Drawing.Size(100, 20)
+        Me.txtOutputAfterCommission.TabIndex = 19
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(31, 54)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(117, 13)
+        Me.Label5.TabIndex = 7
+        Me.Label5.Text = "Total After Commission:"
+        '
+        'txtOuputBeforeCommission
+        '
+        Me.txtOuputBeforeCommission.Location = New System.Drawing.Point(154, 26)
+        Me.txtOuputBeforeCommission.Name = "txtOuputBeforeCommission"
+        Me.txtOuputBeforeCommission.ReadOnly = True
+        Me.txtOuputBeforeCommission.Size = New System.Drawing.Size(100, 20)
+        Me.txtOuputBeforeCommission.TabIndex = 18
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 31)
+        Me.Label1.Location = New System.Drawing.Point(22, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(123, 13)
+        Me.Label1.Size = New System.Drawing.Size(126, 13)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Total Before Commission"
+        Me.Label1.Text = "Total Before Commission:"
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(232, 389)
+        Me.btnReset.Location = New System.Drawing.Point(292, 355)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(75, 23)
-        Me.btnReset.TabIndex = 0
+        Me.btnReset.TabIndex = 20
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
-        '
-        'rbDollarPound
-        '
-        Me.rbDollarPound.AutoSize = True
-        Me.rbDollarPound.Location = New System.Drawing.Point(164, 247)
-        Me.rbDollarPound.Name = "rbDollarPound"
-        Me.rbDollarPound.Size = New System.Drawing.Size(98, 17)
-        Me.rbDollarPound.TabIndex = 21
-        Me.rbDollarPound.TabStop = True
-        Me.rbDollarPound.Text = "Dollar to Pound"
-        Me.rbDollarPound.UseVisualStyleBackColor = True
-        '
-        'lbConversion
-        '
-        Me.lbConversion.AutoSize = True
-        Me.lbConversion.Location = New System.Drawing.Point(25, 197)
-        Me.lbConversion.Name = "lbConversion"
-        Me.lbConversion.Size = New System.Drawing.Size(160, 13)
-        Me.lbConversion.TabIndex = 22
-        Me.lbConversion.Text = "What would you like to convert?"
         '
         'Main_Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(896, 457)
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.ClientSize = New System.Drawing.Size(808, 424)
         Me.Controls.Add(Me.grpOutput)
         Me.Controls.Add(Me.grpInput)
         Me.Controls.Add(Me.menuHome)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.menuHome
+        Me.MaximizeBox = False
         Me.Name = "Main_Home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Bureau de Change"
         Me.grpInput.ResumeLayout(False)
         Me.grpInput.PerformLayout()
+        Me.tlprbDenominations.ResumeLayout(False)
+        Me.tlprbDenominations.PerformLayout()
         Me.menuHome.ResumeLayout(False)
         Me.menuHome.PerformLayout()
         Me.grpOutput.ResumeLayout(False)
@@ -396,7 +526,6 @@ Partial Class Main_Home
     Friend WithEvents CloseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents grpOutput As System.Windows.Forms.GroupBox
     Friend WithEvents btnReset As System.Windows.Forms.Button
-    Friend WithEvents btnConvert As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents cmbTitle As System.Windows.Forms.ComboBox
@@ -421,5 +550,17 @@ Partial Class Main_Home
     Friend WithEvents rbPoundDollar As System.Windows.Forms.RadioButton
     Friend WithEvents rbDollarPound As System.Windows.Forms.RadioButton
     Friend WithEvents lbConversion As System.Windows.Forms.Label
+    Friend WithEvents lblInputAmount As System.Windows.Forms.Label
+    Friend WithEvents txtInputAmount As System.Windows.Forms.TextBox
+    Friend WithEvents lblDenominations As System.Windows.Forms.Label
+    Friend WithEvents txtOuputBeforeCommission As System.Windows.Forms.TextBox
+    Friend WithEvents txtOutputAfterCommission As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents rbDenominationsYes As System.Windows.Forms.RadioButton
+    Friend WithEvents rbDenominationsNo As System.Windows.Forms.RadioButton
+    Friend WithEvents btnConvert As System.Windows.Forms.Button
+    Friend WithEvents tlprbDenominations As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents lblLoss As System.Windows.Forms.Label
+    Friend WithEvents txtLoss As System.Windows.Forms.TextBox
 
 End Class

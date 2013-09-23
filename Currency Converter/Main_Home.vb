@@ -1,6 +1,6 @@
 ﻿Public Class Main_Home
 
-    Sub Currency_Convertor()
+    Public Sub Currency_Convertor()
 
         ' User Personsal Information (Input Value)
         Dim userForename As String
@@ -11,19 +11,98 @@
         Dim userAddress As String
         Dim userPostcode As String
 
-        ' Currency Values
-        Dim exchangePoundEuro As String
-        Dim exchangeEuroPound As String
-        Dim exchangePoundDollar As String
-        Dim exchangeDollarPound As String
+        ' Booleans
+        Dim denominations As Boolean
+
+        ' Setting Variables
+        userForename = txtuserFirstName.Text
+        userSurname = txtuserSurname.Text
+        userDateOfBirth = dtpDOB.Text
+        userNationalInsuranceNumber = txtNIN.Text
+        userHouseNumber = txtHouseNumber.Text
+        userAddress = txtStreetName.Text + txtTownCity.Text
+        userPostcode = txtPostcode.Text
+
+        ' Checking If User Has Selected Yes/No
+        If rbDenominationsYes.Checked = True Then
+
+            denominations = True
+
+        ElseIf rbDenominationsNo.Checked = True Then
+
+            denominations = False
+
+        End If
+
+    End Sub
+
+    Public Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
+
+        ' Currency Variable
+        Dim exchangePoundEuro As Single = "1.19"
+        Dim exchangeEuroPound As Single = "0.84"
+        Dim exchangePoundDollar As Single = "1.6"
+        Dim exchangeDollarPound As Single = "0.62"
 
         ' Companies Commision Value
         Dim commision As String = 5
+        Dim sum As String
+        Dim sum2 As String
+
+        ' Input Variables For Conversion
+        Dim inputAmount As Single
 
         ' Output Values
         Dim outputBasic As Single
         Dim outputCommission As Single
         Dim outputFinal As Single
+        Dim outputLoss As Single
+
+        ' Set Variables
+        inputAmount = txtInputAmount.Text
+
+        ' Perform the calculations / Set Outputs
+        If rbPoundEuro.Checked = True Then
+
+            outputBasic = inputAmount * exchangePoundEuro
+            sum = inputAmount / 100 * commision
+            outputCommission = inputAmount * exchangePoundEuro - sum
+
+            outputLoss = sum
+            txtLoss.Text = Format("£" & outputLoss)
+
+        ElseIf rbEuroPound.Checked Then
+
+            outputBasic = inputAmount * exchangeEuroPound
+            sum = inputAmount / 100 * commision
+            outputCommission = inputAmount * exchangeEuroPound - sum
+
+            outputLoss = sum
+            txtLoss.Text = Format("€" & outputLoss)
+
+        ElseIf rbPoundDollar.Checked Then
+
+            outputBasic = inputAmount * exchangePoundDollar
+            sum = inputAmount / 100 * commision
+            outputCommission = inputAmount * exchangePoundDollar - sum
+
+            outputLoss = sum
+            txtLoss.Text = Format("£" & outputLoss)
+
+        ElseIf rbDollarPound.Checked Then
+
+            outputBasic = inputAmount * exchangeDollarPound
+            sum = inputAmount / 100 * commision
+            outputCommission = inputAmount * exchangeDollarPound - sum
+
+            outputLoss = sum
+            txtLoss.Text = Format("$" & outputLoss)
+
+        End If
+
+        ' Set Outputs
+        txtOuputBeforeCommission.Text = outputBasic
+        txtOutputAfterCommission.Text = outputCommission
 
     End Sub
 
@@ -39,7 +118,4 @@
 
     End Sub
 
-    Private Sub Main_Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
