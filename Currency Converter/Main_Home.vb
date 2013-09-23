@@ -48,7 +48,7 @@
         ' Set Variables
 
         If txtInputAmount.Text = "" Then
-
+            MsgBox("Please enter a value to contine!")
         Else
             inputAmount = txtInputAmount.Text
         End If
