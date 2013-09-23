@@ -23,17 +23,6 @@
         userAddress = txtStreetName.Text + txtTownCity.Text
         userPostcode = txtPostcode.Text
 
-        ' Checking If User Has Selected Yes/No
-        If rbDenominationsYes.Checked = True Then
-
-            denominations = True
-
-        ElseIf rbDenominationsNo.Checked = True Then
-
-            denominations = False
-
-        End If
-
     End Sub
 
     Public Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
@@ -47,7 +36,6 @@
         ' Companies Commision Value
         Dim commision As String = 5
         Dim sum As String
-        Dim sum2 As String
 
         ' Input Variables For Conversion
         Dim inputAmount As Single
@@ -55,11 +43,15 @@
         ' Output Values
         Dim outputBasic As Single
         Dim outputCommission As Single
-        Dim outputFinal As Single
         Dim outputLoss As Single
 
         ' Set Variables
-        inputAmount = txtInputAmount.Text
+
+        If txtInputAmount.Text = "" Then
+
+        Else
+            inputAmount = txtInputAmount.Text
+        End If
 
         ' Perform the calculations / Set Outputs
         If rbPoundEuro.Checked = True Then
