@@ -66,6 +66,7 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.grpInput.SuspendLayout()
         Me.tlprbDenominations.SuspendLayout()
         Me.menuHome.SuspendLayout()
@@ -417,6 +418,7 @@ Partial Class Main_Home
         '
         'grpOutput
         '
+        Me.grpOutput.Controls.Add(Me.btnSave)
         Me.grpOutput.Controls.Add(Me.txtLoss)
         Me.grpOutput.Controls.Add(Me.lblLoss)
         Me.grpOutput.Controls.Add(Me.txtOutputAfterCommission)
@@ -491,6 +493,15 @@ Partial Class Main_Home
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(207, 355)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(79, 23)
+        Me.btnSave.TabIndex = 23
+        Me.btnSave.Text = "Save Results"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
         'Main_Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -562,5 +573,6 @@ Partial Class Main_Home
     Friend WithEvents tlprbDenominations As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents lblLoss As System.Windows.Forms.Label
     Friend WithEvents txtLoss As System.Windows.Forms.TextBox
+    Friend WithEvents btnSave As System.Windows.Forms.Button
 
 End Class
