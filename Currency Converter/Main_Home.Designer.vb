@@ -24,9 +24,6 @@ Partial Class Main_Home
     Private Sub InitializeComponent()
         Me.grpInput = New System.Windows.Forms.GroupBox()
         Me.btnConvert = New System.Windows.Forms.Button()
-        Me.tlprbDenominations = New System.Windows.Forms.TableLayoutPanel()
-        Me.rbDenominationsYes = New System.Windows.Forms.RadioButton()
-        Me.rbDenominationsNo = New System.Windows.Forms.RadioButton()
         Me.lblDenominations = New System.Windows.Forms.Label()
         Me.lblInputAmount = New System.Windows.Forms.Label()
         Me.txtInputAmount = New System.Windows.Forms.TextBox()
@@ -59,6 +56,7 @@ Partial Class Main_Home
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.grpOutput = New System.Windows.Forms.GroupBox()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.txtLoss = New System.Windows.Forms.TextBox()
         Me.lblLoss = New System.Windows.Forms.Label()
         Me.txtOutputAfterCommission = New System.Windows.Forms.TextBox()
@@ -66,17 +64,16 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
+        Me.cbDenominations = New System.Windows.Forms.ComboBox()
         Me.grpInput.SuspendLayout()
-        Me.tlprbDenominations.SuspendLayout()
         Me.menuHome.SuspendLayout()
         Me.grpOutput.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpInput
         '
+        Me.grpInput.Controls.Add(Me.cbDenominations)
         Me.grpInput.Controls.Add(Me.btnConvert)
-        Me.grpInput.Controls.Add(Me.tlprbDenominations)
         Me.grpInput.Controls.Add(Me.lblDenominations)
         Me.grpInput.Controls.Add(Me.lblInputAmount)
         Me.grpInput.Controls.Add(Me.txtInputAmount)
@@ -119,42 +116,6 @@ Partial Class Main_Home
         Me.btnConvert.TabIndex = 17
         Me.btnConvert.Text = "Convert"
         Me.btnConvert.UseVisualStyleBackColor = True
-        '
-        'tlprbDenominations
-        '
-        Me.tlprbDenominations.ColumnCount = 2
-        Me.tlprbDenominations.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlprbDenominations.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54.0!))
-        Me.tlprbDenominations.Controls.Add(Me.rbDenominationsYes, 0, 0)
-        Me.tlprbDenominations.Controls.Add(Me.rbDenominationsNo, 1, 0)
-        Me.tlprbDenominations.Location = New System.Drawing.Point(255, 295)
-        Me.tlprbDenominations.Name = "tlprbDenominations"
-        Me.tlprbDenominations.RowCount = 1
-        Me.tlprbDenominations.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tlprbDenominations.Size = New System.Drawing.Size(111, 28)
-        Me.tlprbDenominations.TabIndex = 26
-        '
-        'rbDenominationsYes
-        '
-        Me.rbDenominationsYes.AutoSize = True
-        Me.rbDenominationsYes.Location = New System.Drawing.Point(3, 3)
-        Me.rbDenominationsYes.Name = "rbDenominationsYes"
-        Me.rbDenominationsYes.Size = New System.Drawing.Size(43, 17)
-        Me.rbDenominationsYes.TabIndex = 15
-        Me.rbDenominationsYes.TabStop = True
-        Me.rbDenominationsYes.Text = "Yes"
-        Me.rbDenominationsYes.UseVisualStyleBackColor = True
-        '
-        'rbDenominationsNo
-        '
-        Me.rbDenominationsNo.AutoSize = True
-        Me.rbDenominationsNo.Location = New System.Drawing.Point(60, 3)
-        Me.rbDenominationsNo.Name = "rbDenominationsNo"
-        Me.rbDenominationsNo.Size = New System.Drawing.Size(39, 17)
-        Me.rbDenominationsNo.TabIndex = 16
-        Me.rbDenominationsNo.TabStop = True
-        Me.rbDenominationsNo.Text = "No"
-        Me.rbDenominationsNo.UseVisualStyleBackColor = True
         '
         'lblDenominations
         '
@@ -433,6 +394,15 @@ Partial Class Main_Home
         Me.grpOutput.TabStop = False
         Me.grpOutput.Text = "Output Values"
         '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(207, 355)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(79, 23)
+        Me.btnSave.TabIndex = 23
+        Me.btnSave.Text = "Save Results"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
         'txtLoss
         '
         Me.txtLoss.Location = New System.Drawing.Point(154, 77)
@@ -493,14 +463,14 @@ Partial Class Main_Home
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
-        'btnSave
+        'cbDenominations
         '
-        Me.btnSave.Location = New System.Drawing.Point(207, 355)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(79, 23)
-        Me.btnSave.TabIndex = 23
-        Me.btnSave.Text = "Save Results"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.cbDenominations.FormattingEnabled = True
+        Me.cbDenominations.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbDenominations.Location = New System.Drawing.Point(255, 298)
+        Me.cbDenominations.Name = "cbDenominations"
+        Me.cbDenominations.Size = New System.Drawing.Size(82, 21)
+        Me.cbDenominations.TabIndex = 26
         '
         'Main_Home
         '
@@ -519,8 +489,6 @@ Partial Class Main_Home
         Me.Text = "Bureau de Change"
         Me.grpInput.ResumeLayout(False)
         Me.grpInput.PerformLayout()
-        Me.tlprbDenominations.ResumeLayout(False)
-        Me.tlprbDenominations.PerformLayout()
         Me.menuHome.ResumeLayout(False)
         Me.menuHome.PerformLayout()
         Me.grpOutput.ResumeLayout(False)
@@ -567,12 +535,10 @@ Partial Class Main_Home
     Friend WithEvents txtOuputBeforeCommission As System.Windows.Forms.TextBox
     Friend WithEvents txtOutputAfterCommission As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents rbDenominationsYes As System.Windows.Forms.RadioButton
-    Friend WithEvents rbDenominationsNo As System.Windows.Forms.RadioButton
     Friend WithEvents btnConvert As System.Windows.Forms.Button
-    Friend WithEvents tlprbDenominations As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents lblLoss As System.Windows.Forms.Label
     Friend WithEvents txtLoss As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents cbDenominations As System.Windows.Forms.ComboBox
 
 End Class

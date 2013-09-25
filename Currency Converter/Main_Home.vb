@@ -86,24 +86,29 @@ Public Class Main_Home
 
     Private Sub CloseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripMenuItem.Click
 
-        Dim intResponse As Integer
+        Dim userResponse As Integer
 
-        intResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Close")
+        ' Displays a message box to ask the user if they want to save/export there results before closing.
+        userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
 
-        If intResponse = vbNo Then
+        If userResponse = vbNo Then
 
+            ' If the user clicks "No" then the application closes.
             Application.Exit()
 
-        ElseIf intResponse = vbYes Then
+        ElseIf userResponse = vbYes Then
 
+            ' If the user clicks "Yes" then the application exports the results and then closes the application.
             btnSave.PerformClick()
             Application.Exit()
+
         End If
 
     End Sub
 
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
 
+        ' Restarts/Reloads the application to clear all the fields for a second use.
         Application.Restart()
 
     End Sub
@@ -119,11 +124,9 @@ Public Class Main_Home
         Dim userHouseNumber As String
         Dim userAddress As String
         Dim userPostcode As String
+        Dim denominations As String
 
-        ' Booleans
-        Dim denominations As Boolean
-
-        ' Setting Variables
+        ' Setting Variables - This sets a value of each variable for calling at a later stage.
         userTitle = cmbTitle.Text
         userForename = txtuserFirstName.Text
         userSurname = txtuserSurname.Text
@@ -132,8 +135,10 @@ Public Class Main_Home
         userHouseNumber = txtHouseNumber.Text
         userAddress = txtStreetName.Text & ", " & txtTownCity.Text
         userPostcode = txtPostcode.Text
+        denominations = cbDenominations.Text
 
-        ' File Name For Exporting
+        ' File Name For Exporting - This exports all the data to a text file which then opens up, this is so that the user can
+        ' take away there results for further usage. (Output)
         Dim exportFileName As String = "Currency_Converter_Export.txt"
 
         If File.Exists(exportFileName) Then
@@ -151,6 +156,10 @@ Public Class Main_Home
                 write.WriteLine("Total Money Before Exchange: " & txtOuputBeforeCommission.Text)
                 write.WriteLine("Total After Exchange: " & txtOutputAfterCommission.Text)
                 write.WriteLine("Total Commission Charge: " & txtLoss.Text)
+                write.WriteLine("In Small Denominations? " & denominations)
+
+                System.Diagnostics.Process.Start(exportFileName)
+
             End Using
         Else
             Using write As StreamWriter = File.CreateText(exportFileName)
@@ -167,6 +176,10 @@ Public Class Main_Home
                 write.WriteLine("Total Money Before Exchange: " & txtOuputBeforeCommission.Text)
                 write.WriteLine("Total After Exchange: " & txtOutputAfterCommission.Text)
                 write.WriteLine("Total Commission Charge: " & txtLoss.Text)
+                write.WriteLine("In Small Denominations? " & denominations)
+
+                System.Diagnostics.Process.Start(exportFileName)
+
             End Using
         End If
 
