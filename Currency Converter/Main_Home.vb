@@ -297,7 +297,6 @@ Public Class Main_Home
         Else
             Using write As StreamWriter = File.CreateText(exportFileName)
 
-
                 write.WriteLine("Title: " & userTitle)
                 write.WriteLine("Forename: " & userForename)
                 write.WriteLine("Surname: " & userSurname)
