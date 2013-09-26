@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Currency Converter")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("York College")> 
+<Assembly: AssemblyDescription("This program was created for a college assignment.")> 
+<Assembly: AssemblyCompany("DiamentiumUK")> 
 <Assembly: AssemblyProduct("Currency Converter")> 
-<Assembly: AssemblyCopyright("Copyright © York College 2013")> 
+<Assembly: AssemblyCopyright("Copyright © DiamentiumUK 2013")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

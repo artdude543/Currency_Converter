@@ -7,6 +7,12 @@ Public Class Main_Home
 
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+
+        Main_About.ShowDialog()
+
+    End Sub
+
     Private Sub Main_Home_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' This sets the values of the "Date Of Birth" field so that we ensure that only people of a certain age can use this form. This also keeps
