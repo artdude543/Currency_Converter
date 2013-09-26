@@ -23,6 +23,7 @@ Partial Class Main_Home
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpInput = New System.Windows.Forms.GroupBox()
+        Me.cbDenominations = New System.Windows.Forms.ComboBox()
         Me.btnConvert = New System.Windows.Forms.Button()
         Me.lblDenominations = New System.Windows.Forms.Label()
         Me.lblInputAmount = New System.Windows.Forms.Label()
@@ -64,7 +65,6 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
-        Me.cbDenominations = New System.Windows.Forms.ComboBox()
         Me.grpInput.SuspendLayout()
         Me.menuHome.SuspendLayout()
         Me.grpOutput.SuspendLayout()
@@ -107,13 +107,23 @@ Partial Class Main_Home
         Me.grpInput.TabStop = False
         Me.grpInput.Text = "Input Values"
         '
+        'cbDenominations
+        '
+        Me.cbDenominations.Enabled = False
+        Me.cbDenominations.FormattingEnabled = True
+        Me.cbDenominations.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbDenominations.Location = New System.Drawing.Point(255, 298)
+        Me.cbDenominations.Name = "cbDenominations"
+        Me.cbDenominations.Size = New System.Drawing.Size(82, 21)
+        Me.cbDenominations.TabIndex = 15
+        '
         'btnConvert
         '
         Me.btnConvert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnConvert.Location = New System.Drawing.Point(324, 355)
         Me.btnConvert.Name = "btnConvert"
         Me.btnConvert.Size = New System.Drawing.Size(75, 23)
-        Me.btnConvert.TabIndex = 17
+        Me.btnConvert.TabIndex = 16
         Me.btnConvert.Text = "Convert"
         Me.btnConvert.UseVisualStyleBackColor = True
         '
@@ -137,6 +147,7 @@ Partial Class Main_Home
         '
         'txtInputAmount
         '
+        Me.txtInputAmount.Enabled = False
         Me.txtInputAmount.Location = New System.Drawing.Point(229, 269)
         Me.txtInputAmount.Name = "txtInputAmount"
         Me.txtInputAmount.Size = New System.Drawing.Size(160, 20)
@@ -197,6 +208,7 @@ Partial Class Main_Home
         '
         'txtTownCity
         '
+        Me.txtTownCity.Enabled = False
         Me.txtTownCity.Location = New System.Drawing.Point(90, 163)
         Me.txtTownCity.Name = "txtTownCity"
         Me.txtTownCity.Size = New System.Drawing.Size(299, 20)
@@ -222,6 +234,7 @@ Partial Class Main_Home
         '
         'txtStreetName
         '
+        Me.txtStreetName.Enabled = False
         Me.txtStreetName.Location = New System.Drawing.Point(90, 137)
         Me.txtStreetName.Name = "txtStreetName"
         Me.txtStreetName.Size = New System.Drawing.Size(299, 20)
@@ -229,6 +242,7 @@ Partial Class Main_Home
         '
         'txtHouseNumber
         '
+        Me.txtHouseNumber.Enabled = False
         Me.txtHouseNumber.Location = New System.Drawing.Point(90, 111)
         Me.txtHouseNumber.Name = "txtHouseNumber"
         Me.txtHouseNumber.Size = New System.Drawing.Size(106, 20)
@@ -254,6 +268,7 @@ Partial Class Main_Home
         '
         'txtPostcode
         '
+        Me.txtPostcode.Enabled = False
         Me.txtPostcode.Location = New System.Drawing.Point(263, 111)
         Me.txtPostcode.Name = "txtPostcode"
         Me.txtPostcode.Size = New System.Drawing.Size(126, 20)
@@ -261,6 +276,7 @@ Partial Class Main_Home
         '
         'txtNIN
         '
+        Me.txtNIN.Enabled = False
         Me.txtNIN.Location = New System.Drawing.Point(283, 85)
         Me.txtNIN.Name = "txtNIN"
         Me.txtNIN.Size = New System.Drawing.Size(106, 20)
@@ -303,6 +319,7 @@ Partial Class Main_Home
         '
         'txtuserSurname
         '
+        Me.txtuserSurname.Enabled = False
         Me.txtuserSurname.Location = New System.Drawing.Point(91, 59)
         Me.txtuserSurname.Name = "txtuserSurname"
         Me.txtuserSurname.Size = New System.Drawing.Size(298, 20)
@@ -337,6 +354,7 @@ Partial Class Main_Home
         '
         'txtuserFirstName
         '
+        Me.txtuserFirstName.Enabled = False
         Me.txtuserFirstName.Location = New System.Drawing.Point(283, 31)
         Me.txtuserFirstName.Name = "txtuserFirstName"
         Me.txtuserFirstName.Size = New System.Drawing.Size(106, 20)
@@ -399,7 +417,7 @@ Partial Class Main_Home
         Me.btnSave.Location = New System.Drawing.Point(207, 355)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(79, 23)
-        Me.btnSave.TabIndex = 23
+        Me.btnSave.TabIndex = 20
         Me.btnSave.Text = "Save Results"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -409,7 +427,7 @@ Partial Class Main_Home
         Me.txtLoss.Name = "txtLoss"
         Me.txtLoss.ReadOnly = True
         Me.txtLoss.Size = New System.Drawing.Size(100, 20)
-        Me.txtLoss.TabIndex = 22
+        Me.txtLoss.TabIndex = 19
         '
         'lblLoss
         '
@@ -426,7 +444,7 @@ Partial Class Main_Home
         Me.txtOutputAfterCommission.Name = "txtOutputAfterCommission"
         Me.txtOutputAfterCommission.ReadOnly = True
         Me.txtOutputAfterCommission.Size = New System.Drawing.Size(100, 20)
-        Me.txtOutputAfterCommission.TabIndex = 19
+        Me.txtOutputAfterCommission.TabIndex = 18
         '
         'Label5
         '
@@ -443,7 +461,7 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission.Name = "txtOuputBeforeCommission"
         Me.txtOuputBeforeCommission.ReadOnly = True
         Me.txtOuputBeforeCommission.Size = New System.Drawing.Size(100, 20)
-        Me.txtOuputBeforeCommission.TabIndex = 18
+        Me.txtOuputBeforeCommission.TabIndex = 17
         '
         'Label1
         '
@@ -459,18 +477,9 @@ Partial Class Main_Home
         Me.btnReset.Location = New System.Drawing.Point(292, 355)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(75, 23)
-        Me.btnReset.TabIndex = 20
+        Me.btnReset.TabIndex = 21
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
-        '
-        'cbDenominations
-        '
-        Me.cbDenominations.FormattingEnabled = True
-        Me.cbDenominations.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbDenominations.Location = New System.Drawing.Point(255, 298)
-        Me.cbDenominations.Name = "cbDenominations"
-        Me.cbDenominations.Size = New System.Drawing.Size(82, 21)
-        Me.cbDenominations.TabIndex = 26
         '
         'Main_Home
         '

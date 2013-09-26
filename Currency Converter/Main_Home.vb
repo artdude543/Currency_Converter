@@ -7,6 +7,16 @@ Public Class Main_Home
 
     End Sub
 
+    Private Sub Main_Home_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        ' This sets the values of the "Date Of Birth" field so that we ensure that only people of a certain age can use this form. This also keeps
+        ' this also updates on a day to day basis
+        dtpDOB.Value = DateAdd(DateInterval.Year, -16, Today.Date)
+        dtpDOB.MinDate = DateAdd(DateInterval.Year, -100, Today.Date)
+        dtpDOB.MaxDate = DateAdd(DateInterval.Year, -16, Today.Date)
+
+    End Sub
+
     Public Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
 
         ' Currency Variable
@@ -16,7 +26,7 @@ Public Class Main_Home
         Dim exchangeDollarPound As Single = "0.62"
 
         ' Companies Commision Value
-        Dim commision As String = 5
+        Dim commision As String = "5"
         Dim sum As String
 
         ' Input Variables For Conversion
@@ -84,6 +94,128 @@ Public Class Main_Home
 
     End Sub
 
+    ' This set of fuctions check, if the user is filling in the form then as doing it enables other fields so that the user can use the form. This
+    ' also forces that the user must fill out the whole form to be able to use it to the full content.
+    Private Sub cmbTitle_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbTitle.TextChanged
+
+        If cmbTitle.Text <> "" Then
+
+            txtuserFirstName.Enabled = True
+
+        Else
+
+            txtuserFirstName.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtuserFirstName_TextChanged(sender As Object, e As EventArgs) Handles txtuserFirstName.TextChanged
+
+        If txtuserFirstName.Text <> "" Then
+
+            txtuserSurname.Enabled = True
+
+        Else
+
+            txtuserSurname.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtuserSurname_TextChanged(sender As Object, e As EventArgs) Handles txtuserSurname.TextChanged
+
+        If txtuserSurname.Text <> "" Then
+
+            txtNIN.Enabled = True
+
+        Else
+
+            txtNIN.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtNIN_TextChanged(sender As Object, e As EventArgs) Handles txtNIN.TextChanged
+
+        If txtNIN.Text <> "" Then
+
+            txtHouseNumber.Enabled = True
+
+        Else
+
+            txtHouseNumber.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtHouseNumber_TextChanged(sender As Object, e As EventArgs) Handles txtHouseNumber.TextChanged
+
+        If txtHouseNumber.Text <> "" Then
+
+            txtPostcode.Enabled = True
+
+        Else
+
+            txtPostcode.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtPostcode_TextChanged(sender As Object, e As EventArgs) Handles txtPostcode.TextChanged
+
+        If txtPostcode.Text <> "" Then
+
+            txtStreetName.Enabled = True
+
+        Else
+
+            txtStreetName.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtStreetName_TextChanged(sender As Object, e As EventArgs) Handles txtStreetName.TextChanged
+
+        If txtStreetName.Text <> "" Then
+
+            txtTownCity.Enabled = True
+
+        Else
+
+            txtTownCity.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtTownCity_TextChanged(sender As Object, e As EventArgs) Handles txtTownCity.TextChanged
+
+        If txtTownCity.Text <> "" Then
+
+            txtInputAmount.Enabled = True
+
+        Else
+
+            txtInputAmount.Enabled = False
+
+        End If
+
+    End Sub
+    ' End of check functions
+
+    Private Sub Main_Home_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+
+        ' Performs the click event for closing, asking the user if they want to save or not.
+        CloseToolStripMenuItem.PerformClick()
+
+    End Sub
+
     Private Sub CloseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripMenuItem.Click
 
         Dim userResponse As Integer
@@ -143,6 +275,7 @@ Public Class Main_Home
 
         If File.Exists(exportFileName) Then
             Using write As StreamWriter = File.CreateText(exportFileName)
+
                 write.WriteLine("Title: " & userTitle)
                 write.WriteLine("Forename: " & userForename)
                 write.WriteLine("Surname: " & userSurname)
@@ -163,6 +296,8 @@ Public Class Main_Home
             End Using
         Else
             Using write As StreamWriter = File.CreateText(exportFileName)
+
+
                 write.WriteLine("Title: " & userTitle)
                 write.WriteLine("Forename: " & userForename)
                 write.WriteLine("Surname: " & userSurname)
@@ -184,4 +319,5 @@ Public Class Main_Home
         End If
 
     End Sub
+
 End Class
