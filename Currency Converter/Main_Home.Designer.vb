@@ -65,6 +65,7 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.grpInput.SuspendLayout()
         Me.menuHome.SuspendLayout()
         Me.grpOutput.SuspendLayout()
@@ -120,6 +121,7 @@ Partial Class Main_Home
         'btnConvert
         '
         Me.btnConvert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnConvert.Enabled = False
         Me.btnConvert.Location = New System.Drawing.Point(324, 355)
         Me.btnConvert.Name = "btnConvert"
         Me.btnConvert.Size = New System.Drawing.Size(75, 23)
@@ -165,6 +167,7 @@ Partial Class Main_Home
         'rbDollarPound
         '
         Me.rbDollarPound.AutoSize = True
+        Me.rbDollarPound.Enabled = False
         Me.rbDollarPound.Location = New System.Drawing.Point(164, 247)
         Me.rbDollarPound.Name = "rbDollarPound"
         Me.rbDollarPound.Size = New System.Drawing.Size(98, 17)
@@ -176,6 +179,7 @@ Partial Class Main_Home
         'rbPoundDollar
         '
         Me.rbPoundDollar.AutoSize = True
+        Me.rbPoundDollar.Enabled = False
         Me.rbPoundDollar.Location = New System.Drawing.Point(58, 247)
         Me.rbPoundDollar.Name = "rbPoundDollar"
         Me.rbPoundDollar.Size = New System.Drawing.Size(98, 17)
@@ -187,6 +191,7 @@ Partial Class Main_Home
         'rbPoundEuro
         '
         Me.rbPoundEuro.AutoSize = True
+        Me.rbPoundEuro.Enabled = False
         Me.rbPoundEuro.Location = New System.Drawing.Point(58, 224)
         Me.rbPoundEuro.Name = "rbPoundEuro"
         Me.rbPoundEuro.Size = New System.Drawing.Size(93, 17)
@@ -198,6 +203,7 @@ Partial Class Main_Home
         'rbEuroPound
         '
         Me.rbEuroPound.AutoSize = True
+        Me.rbEuroPound.Enabled = False
         Me.rbEuroPound.Location = New System.Drawing.Point(164, 224)
         Me.rbEuroPound.Name = "rbEuroPound"
         Me.rbEuroPound.Size = New System.Drawing.Size(93, 17)
@@ -293,6 +299,7 @@ Partial Class Main_Home
         '
         'dtpDOB
         '
+        Me.dtpDOB.Enabled = False
         Me.dtpDOB.Location = New System.Drawing.Point(91, 85)
         Me.dtpDOB.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
         Me.dtpDOB.Name = "dtpDOB"
@@ -373,30 +380,31 @@ Partial Class Main_Home
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CloseToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(105, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'grpOutput
         '
+        Me.grpOutput.Controls.Add(Me.btnClose)
         Me.grpOutput.Controls.Add(Me.btnSave)
         Me.grpOutput.Controls.Add(Me.txtLoss)
         Me.grpOutput.Controls.Add(Me.lblLoss)
@@ -414,6 +422,7 @@ Partial Class Main_Home
         '
         'btnSave
         '
+        Me.btnSave.Enabled = False
         Me.btnSave.Location = New System.Drawing.Point(207, 355)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(79, 23)
@@ -474,12 +483,22 @@ Partial Class Main_Home
         '
         'btnReset
         '
+        Me.btnReset.Enabled = False
         Me.btnReset.Location = New System.Drawing.Point(292, 355)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(75, 23)
         Me.btnReset.TabIndex = 21
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
+        '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(292, 326)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.TabIndex = 22
+        Me.btnClose.Text = "Button1"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'Main_Home
         '
@@ -549,5 +568,6 @@ Partial Class Main_Home
     Friend WithEvents txtLoss As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents cbDenominations As System.Windows.Forms.ComboBox
+    Friend WithEvents btnClose As System.Windows.Forms.Button
 
 End Class

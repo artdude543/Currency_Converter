@@ -7,8 +7,10 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles AboutToolStripMenuItem.Click
 
+        ' Shows the "About" Form as a DialogBox. (Meaning you can-not contine using the main form while the about form is still
+        ' open)
         Main_About.ShowDialog()
 
     End Sub
@@ -16,14 +18,14 @@ Public Class Main_Home
     Private Sub Main_Home_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' This sets the values of the "Date Of Birth" field so that we ensure that only people of a certain age can use this form. This also keeps
-        ' this also updates on a day to day basis
+        ' this also updates on a day to day basis.
         dtpDOB.Value = DateAdd(DateInterval.Year, -16, Today.Date)
         dtpDOB.MinDate = DateAdd(DateInterval.Year, -100, Today.Date)
         dtpDOB.MaxDate = DateAdd(DateInterval.Year, -16, Today.Date)
 
     End Sub
 
-    Public Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
+    Public Sub btnConvert_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnConvert.Click
 
         ' Currency Variable
         Dim exchangePoundEuro As Single = "1.19"
@@ -43,25 +45,38 @@ Public Class Main_Home
         Dim outputCommission As Single
         Dim outputLoss As Single
 
-        ' Set Variables
-
+        ' This "If" statment is checking whether if the "inputAmount" text box has nothing inside before peforming the calucuations.
         If txtInputAmount.Text = "" Then
+
             MsgBox("Please enter a value to contine!")
+
         Else
+
             inputAmount = txtInputAmount.Text
+
         End If
 
         ' Perform the calculations / Set Outputs
-        If rbPoundEuro.Checked = True Then
+        If rbPoundEuro.Checked = True Then ' This checks if that the "Radio Button" has been checked.
 
+            ' This is setting the "outputBasic" value to perform the calcuation of timesing the "inputAmount" by the exchange 
+            ' value defined by the code.
             outputBasic = inputAmount * exchangePoundEuro
+            ' This is setting the "sum" value to take the "inputAmount" and dividing by 100 and the timesing by the commission.
             sum = inputAmount / 100 * commision
+            ' This is setting the "outputCommission" by taking the "inputAmount" and timesing by the exchange value and taking away 
+            ' the "sum" value which is defined above.
             outputCommission = inputAmount * exchangePoundEuro - sum
 
             outputLoss = sum
+
+            ' This is setting the string value of the text boxes to output the results of the calculations performed above.
             txtLoss.Text = Format("£" & outputLoss)
             txtOuputBeforeCommission.Text = Format("€" & outputBasic)
             txtOutputAfterCommission.Text = Format("€" & outputCommission)
+
+            btnReset.Enabled = True
+            btnSave.Enabled = True
 
         ElseIf rbEuroPound.Checked Then
 
@@ -74,6 +89,9 @@ Public Class Main_Home
             txtOuputBeforeCommission.Text = Format("£" & outputBasic)
             txtOutputAfterCommission.Text = Format("£" & outputCommission)
 
+            btnReset.Enabled = True
+            btnSave.Enabled = True
+
         ElseIf rbPoundDollar.Checked Then
 
             outputBasic = inputAmount * exchangePoundDollar
@@ -85,6 +103,9 @@ Public Class Main_Home
             txtOuputBeforeCommission.Text = Format("$" & outputBasic)
             txtOutputAfterCommission.Text = Format("$" & outputCommission)
 
+            btnReset.Enabled = True
+            btnSave.Enabled = True
+
         ElseIf rbDollarPound.Checked Then
 
             outputBasic = inputAmount * exchangeDollarPound
@@ -95,6 +116,9 @@ Public Class Main_Home
             txtLoss.Text = Format("$" & outputLoss)
             txtOuputBeforeCommission.Text = Format("£" & outputBasic)
             txtOutputAfterCommission.Text = Format("£" & outputCommission)
+
+            btnReset.Enabled = True
+            btnSave.Enabled = True
 
         End If
 
@@ -116,7 +140,7 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtuserFirstName_TextChanged(sender As Object, e As EventArgs) Handles txtuserFirstName.TextChanged
+    Private Sub txtuserFirstName_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtuserFirstName.TextChanged
 
         If txtuserFirstName.Text <> "" Then
 
@@ -130,21 +154,27 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtuserSurname_TextChanged(sender As Object, e As EventArgs) Handles txtuserSurname.TextChanged
+    Private Sub dtpDOB_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles dtpDOB.GotFocus
+
+        txtNIN.Enabled = True
+
+    End Sub
+
+    Private Sub txtuserSurname_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtuserSurname.TextChanged
 
         If txtuserSurname.Text <> "" Then
 
-            txtNIN.Enabled = True
+            dtpDOB.Enabled = True
 
         Else
 
-            txtNIN.Enabled = False
+            dtpDOB.Enabled = False
 
         End If
 
     End Sub
 
-    Private Sub txtNIN_TextChanged(sender As Object, e As EventArgs) Handles txtNIN.TextChanged
+    Private Sub txtNIN_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtNIN.TextChanged
 
         If txtNIN.Text <> "" Then
 
@@ -158,7 +188,7 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtHouseNumber_TextChanged(sender As Object, e As EventArgs) Handles txtHouseNumber.TextChanged
+    Private Sub txtHouseNumber_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtHouseNumber.TextChanged
 
         If txtHouseNumber.Text <> "" Then
 
@@ -172,7 +202,7 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtPostcode_TextChanged(sender As Object, e As EventArgs) Handles txtPostcode.TextChanged
+    Private Sub txtPostcode_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtPostcode.TextChanged
 
         If txtPostcode.Text <> "" Then
 
@@ -186,7 +216,7 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtStreetName_TextChanged(sender As Object, e As EventArgs) Handles txtStreetName.TextChanged
+    Private Sub txtStreetName_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtStreetName.TextChanged
 
         If txtStreetName.Text <> "" Then
 
@@ -200,47 +230,68 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub txtTownCity_TextChanged(sender As Object, e As EventArgs) Handles txtTownCity.TextChanged
+    Private Sub txtTownCity_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtTownCity.TextChanged
 
         If txtTownCity.Text <> "" Then
 
             txtInputAmount.Enabled = True
 
+            rbPoundEuro.Enabled = True
+            rbEuroPound.Enabled = True
+            rbPoundDollar.Enabled = True
+            rbDollarPound.Enabled = True
+
         Else
 
             txtInputAmount.Enabled = False
+
+            rbPoundEuro.Enabled = False
+            rbEuroPound.Enabled = False
+            rbPoundDollar.Enabled = False
+            rbDollarPound.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub txtInputAmount_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtInputAmount.TextChanged
+
+        If txtInputAmount.Text <> "" Then
+
+            cbDenominations.Enabled = True
+
+        Else
+
+            cbDenominations.Enabled = False
+
+        End If
+
+    End Sub
+
+    Private Sub cbDenominations_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbDenominations.TextChanged
+
+        If cbDenominations.Text <> "" Then
+
+            btnConvert.Enabled = True
+
+        Else
+
+            btnConvert.Enabled = False
 
         End If
 
     End Sub
     ' End of check functions
 
-    Private Sub Main_Home_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub Main_Home_FormClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles MyBase.FormClosed
 
-        ' Performs the click event for closing, asking the user if they want to save or not.
-        CloseToolStripMenuItem.PerformClick()
+        btnClose.PerformClick()
 
     End Sub
 
     Private Sub CloseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripMenuItem.Click
 
-        Dim userResponse As Integer
-
-        ' Displays a message box to ask the user if they want to save/export there results before closing.
-        userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
-
-        If userResponse = vbNo Then
-
-            ' If the user clicks "No" then the application closes.
-            Application.Exit()
-
-        ElseIf userResponse = vbYes Then
-
-            ' If the user clicks "Yes" then the application exports the results and then closes the application.
-            btnSave.PerformClick()
-            Application.Exit()
-
-        End If
+        btnClose.PerformClick()
 
     End Sub
 
@@ -251,7 +302,7 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
 
         ' User Personsal Information (Input Value)
         Dim userTitle As String
@@ -325,4 +376,26 @@ Public Class Main_Home
 
     End Sub
 
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+
+        ' Performs the click event for closing, asking the user if they want to save or not.
+        Dim userResponse As Integer
+
+        ' Displays a message box to ask the user if they want to save/export there results before closing.
+        userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
+
+        If userResponse = vbNo Then
+
+            ' If the user clicks "No" then the application closes.
+            Application.Exit()
+
+        ElseIf userResponse = vbYes Then
+
+            ' If the user clicks "Yes" then the application exports the results and then closes the application.
+            btnSave.PerformClick()
+            Application.Exit()
+
+        End If
+
+    End Sub
 End Class
