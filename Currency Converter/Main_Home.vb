@@ -26,7 +26,7 @@ Public Class Main_Home
 
     Public Sub btnConvert_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnConvert.Click
 
-        ' Currency Variable
+        ' Currency Variables
         Dim exchangePoundEuro As Single = "1.18"
         Dim exchangeEuroPound As Single = "0.85"
         Dim exchangePoundDollar As Single = "1.6"
