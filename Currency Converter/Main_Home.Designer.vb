@@ -65,7 +65,6 @@ Partial Class Main_Home
         Me.txtOuputBeforeCommission = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
-        Me.btnClose = New System.Windows.Forms.Button()
         Me.grpInput.SuspendLayout()
         Me.menuHome.SuspendLayout()
         Me.grpOutput.SuspendLayout()
@@ -386,25 +385,24 @@ Partial Class Main_Home
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(111, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(105, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'grpOutput
         '
-        Me.grpOutput.Controls.Add(Me.btnClose)
         Me.grpOutput.Controls.Add(Me.btnSave)
         Me.grpOutput.Controls.Add(Me.txtLoss)
         Me.grpOutput.Controls.Add(Me.lblLoss)
@@ -491,15 +489,6 @@ Partial Class Main_Home
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
-        'btnClose
-        '
-        Me.btnClose.Location = New System.Drawing.Point(292, 326)
-        Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(75, 23)
-        Me.btnClose.TabIndex = 22
-        Me.btnClose.Text = "Button1"
-        Me.btnClose.UseVisualStyleBackColor = True
-        '
         'Main_Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -568,6 +557,5 @@ Partial Class Main_Home
     Friend WithEvents txtLoss As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents cbDenominations As System.Windows.Forms.ComboBox
-    Friend WithEvents btnClose As System.Windows.Forms.Button
 
 End Class

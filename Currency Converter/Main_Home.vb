@@ -7,14 +7,6 @@ Public Class Main_Home
 
     End Sub
 
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles AboutToolStripMenuItem.Click
-
-        ' Shows the "About" Form as a DialogBox. (Meaning you can-not contine using the main form while the about form is still
-        ' open)
-        Main_About.ShowDialog()
-
-    End Sub
-
     Private Sub Main_Home_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' This sets the values of the "Date Of Birth" field so that we ensure that only people of a certain age can use this form. This also keeps
@@ -25,11 +17,18 @@ Public Class Main_Home
 
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles AboutToolStripMenuItem.Click
+
+        ' Shows the "About" Form as a DialogBox. (Meaning you can-not contine using the main form while the about form is still open)
+        Main_About.ShowDialog()
+
+    End Sub
+
     Public Sub btnConvert_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnConvert.Click
 
         ' Currency Variable
-        Dim exchangePoundEuro As Single = "1.19"
-        Dim exchangeEuroPound As Single = "0.84"
+        Dim exchangePoundEuro As Single = "1.18"
+        Dim exchangeEuroPound As Single = "0.85"
         Dim exchangePoundDollar As Single = "1.6"
         Dim exchangeDollarPound As Single = "0.62"
 
@@ -280,18 +279,67 @@ Public Class Main_Home
 
         End If
 
-    End Sub
-    ' End of check functions
+    End Sub ' End of check functions
 
     Private Sub Main_Home_FormClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles MyBase.FormClosed
 
-        btnClose.PerformClick()
+        If btnSave.Enabled = True And btnReset.Enabled = True Then
+
+            Dim userResponse As Integer
+
+            ' Displays a message box to ask the user if they want to save/export there results before closing.
+            userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
+
+            If userResponse = vbNo Then
+
+                ' If the user clicks "No" then the application closes.
+                Application.Exit()
+
+            ElseIf userResponse = vbYes Then
+
+                ' If the user clicks "Yes" then the application exports the results and then closes the application.
+                btnSave.PerformClick()
+                Application.Exit()
+
+            End If
+
+        Else
+
+            ' Close The Application
+            Application.Exit()
+
+        End If
 
     End Sub
 
     Private Sub CloseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripMenuItem.Click
 
-        btnClose.PerformClick()
+        If btnSave.Enabled = True And btnReset.Enabled = True Then
+
+            Dim userResponse As Integer
+
+            ' Displays a message box to ask the user if they want to save/export there results before closing.
+            userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
+
+            If userResponse = vbNo Then
+
+                ' If the user clicks "No" then the application closes.
+                Application.Exit()
+
+            ElseIf userResponse = vbYes Then
+
+                ' If the user clicks "Yes" then the application exports the results and then closes the application.
+                btnSave.PerformClick()
+                Application.Exit()
+
+            End If
+
+        Else
+
+            ' Close The Application
+            Application.Exit()
+
+        End If
 
     End Sub
 
@@ -314,6 +362,7 @@ Public Class Main_Home
         Dim userAddress As String
         Dim userPostcode As String
         Dim denominations As String
+        Dim exportTime As String
 
         ' Setting Variables - This sets a value of each variable for calling at a later stage.
         userTitle = cmbTitle.Text
@@ -325,6 +374,7 @@ Public Class Main_Home
         userAddress = txtStreetName.Text & ", " & txtTownCity.Text
         userPostcode = txtPostcode.Text
         denominations = cbDenominations.Text
+        exportTime = DateAndTime.Now.ToString("hh:mm dddd, dd MMMM yyyy")
 
         ' File Name For Exporting - This exports all the data to a text file which then opens up, this is so that the user can
         ' take away there results for further usage. (Output)
@@ -332,6 +382,9 @@ Public Class Main_Home
 
         If File.Exists(exportFileName) Then
             Using write As StreamWriter = File.CreateText(exportFileName)
+
+                write.WriteLine("Date Generated: " & exportTime)
+                write.WriteLine(vbCrLf)
 
                 write.WriteLine("Title: " & userTitle)
                 write.WriteLine("Forename: " & userForename)
@@ -354,6 +407,9 @@ Public Class Main_Home
         Else
             Using write As StreamWriter = File.CreateText(exportFileName)
 
+                write.WriteLine("Date Generated: " & exportTime)
+                write.WriteLine(vbCrLf)
+
                 write.WriteLine("Title: " & userTitle)
                 write.WriteLine("Forename: " & userForename)
                 write.WriteLine("Surname: " & userSurname)
@@ -373,29 +429,6 @@ Public Class Main_Home
 
             End Using
         End If
-
     End Sub
 
-    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-
-        ' Performs the click event for closing, asking the user if they want to save or not.
-        Dim userResponse As Integer
-
-        ' Displays a message box to ask the user if they want to save/export there results before closing.
-        userResponse = MsgBox("Do you want to save your results before closing?", vbYesNo + vbQuestion + vbDefaultButton2, "Currency Converter - Close")
-
-        If userResponse = vbNo Then
-
-            ' If the user clicks "No" then the application closes.
-            Application.Exit()
-
-        ElseIf userResponse = vbYes Then
-
-            ' If the user clicks "Yes" then the application exports the results and then closes the application.
-            btnSave.PerformClick()
-            Application.Exit()
-
-        End If
-
-    End Sub
 End Class
